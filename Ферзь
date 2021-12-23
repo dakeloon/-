@@ -23,20 +23,20 @@ void showBoard() {
  
 // Функция tryQueen() - проверяет нет ли уже установленных ферзей,
 bool tryQueen(int vertical, int horizontal) {
-  for (int i = 0; i < vertical; ++i) {
-    if (board[i][horizontal]) {
+  for (int queen = 0; queen < vertical; ++ queen) {
+    if (board[queen][horizontal]) {
       return false;
     }
   }
     
-  for  (int i = 1; i <= vertical && horizontal - i >= 0; ++ i) {
-    if (board[vertical-i][horizontal-i]) {
+  for  (int queen = 1; queen <= vertical && horizontal - queen >= 0; ++ queen) {
+    if (board[vertical - queen][horizontal - queen]) {
       return false;
     }
   }
     
-  for (int i = 1; i <= vertical && horizontal+i < size; i++) {
-    if (board[vertical-i][horizontal+i]) {
+  for (int queen = 1; queen <= vertical && horizontal + queen < size; ++ queen) {
+    if (board[vertical - queen][horizontal + queen]) {
       return false;
     }
   }
@@ -53,11 +53,11 @@ void setQueen(int vertical) {
     return;
       
   }
-  for (int i = 0; i < size; ++ i) {
-    if (tryQueen(vertical, i)) {
-      board [vertical][i]  = 1;
+  for (int queen = 0; queen < size; ++ queen) {
+    if (tryQueen(vertical, queen)) {
+      board [vertical][queen]  = 1;
       setQueen (vertical +1);
-      board [vertical][i] = 0;
+      board [vertical][queen] = 0;
     }
   }
     
@@ -72,6 +72,7 @@ int main() {
   cout << "Всего решений: " << resultCount;
   return 0;
 }
+
 
 
 
